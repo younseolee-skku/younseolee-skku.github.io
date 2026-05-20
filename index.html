@@ -1,567 +1,1286 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Younseo Lee | Global Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Younseo Lee | Fashion Business Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
 
-        :root {
-            --bg-color: #0c0f1a;
-            --card-bg: #141826;
-            --border: rgba(255, 255, 255, 0.07);
-            --accent: #b48ef0;
-            --accent2: #7c6df0;
-            --gradient: linear-gradient(135deg, #7c6df0 0%, #b48ef0 100%);
-            --text-main: #f0edf8;
-            --text-dim: #8b8fa8;
-        }
+:root{
+  --blue:#1a56db;
+  --blue-light:#e8f0fe;
+  --blue-mid:#3b82f6;
+  --blue-deep:#1e3a8a;
+  --navy:#0f172a;
+  --text:#1e293b;
+  --text-dim:#64748b;
+  --text-muted:#94a3b8;
+  --bg:#f8fafc;
+  --white:#ffffff;
+  --border:#e2e8f0;
+  --sidebar-w:280px;
+  --card-shadow:0 1px 3px rgba(0,0,0,.08),0 4px 16px rgba(26,86,219,.06);
+  --card-shadow-hover:0 8px 32px rgba(26,86,219,.15);
+}
 
-        html { scroll-behavior: smooth; }
+html{scroll-behavior:smooth;}
+body{
+  font-family:'IBM Plex Sans',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  display:flex;
+  min-height:100vh;
+  line-height:1.7;
+}
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: 'DM Sans', sans-serif;
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
+/* ── SIDEBAR ── */
+.sidebar{
+  width:var(--sidebar-w);
+  min-height:100vh;
+  background:var(--white);
+  border-right:1px solid var(--border);
+  position:fixed;
+  top:0; left:0;
+  display:flex;
+  flex-direction:column;
+  padding:2.5rem 1.8rem;
+  z-index:100;
+  overflow-y:auto;
+}
 
-        /* ── NAV ── */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1.4rem 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(12, 15, 26, 0.85);
-            backdrop-filter: blur(14px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--border);
-        }
+.sidebar-avatar{
+  width:88px; height:88px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--blue-deep),var(--blue-mid));
+  display:flex; align-items:center; justify-content:center;
+  margin:0 auto 1.2rem;
+  font-family:'Playfair Display',serif;
+  font-size:2rem; color:#fff; font-weight:700;
+  letter-spacing:-1px;
+  box-shadow:0 4px 16px rgba(26,86,219,.3);
+  flex-shrink:0;
+}
 
-        .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+.sidebar-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.25rem;
+  font-weight:700;
+  text-align:center;
+  color:var(--navy);
+  line-height:1.3;
+  margin-bottom:.3rem;
+}
 
-        .nav-links {
-            display: flex;
-            gap: 2.2rem;
-        }
+.sidebar-title{
+  font-size:.78rem;
+  color:var(--blue);
+  text-align:center;
+  font-weight:600;
+  letter-spacing:.8px;
+  text-transform:uppercase;
+  margin-bottom:1.8rem;
+}
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dim);
-            font-weight: 500;
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
-            transition: color 0.3s;
-        }
+.sidebar-divider{
+  height:1px;
+  background:var(--border);
+  margin:1.2rem 0;
+}
 
-        .nav-links a:hover { color: #fff; }
+.sidebar-section-label{
+  font-size:.68rem;
+  font-weight:600;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--text-muted);
+  margin-bottom:.8rem;
+}
 
-        /* ── 햄버거 메뉴 (모바일) ── */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 4px;
-            background: none;
-            border: none;
-        }
+.sidebar-info-row{
+  display:flex;
+  align-items:flex-start;
+  gap:.6rem;
+  margin-bottom:.9rem;
+}
 
-        .hamburger span {
-            display: block;
-            width: 24px;
-            height: 2px;
-            background: var(--text-main);
-            border-radius: 2px;
-            transition: all 0.3s;
-        }
+.sidebar-info-icon{
+  width:32px; height:32px;
+  background:var(--blue-light);
+  border-radius:8px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:.85rem;
+  flex-shrink:0;
+}
 
-        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-        .hamburger.open span:nth-child(2) { opacity: 0; }
-        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.sidebar-info-content{
+  flex:1;
+}
 
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 65px;
-            left: 0;
-            width: 100%;
-            background: rgba(12, 15, 26, 0.98);
-            backdrop-filter: blur(14px);
-            border-bottom: 1px solid var(--border);
-            z-index: 999;
-            padding: 1.5rem 8%;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
+.sidebar-info-label{
+  font-size:.7rem;
+  color:var(--text-muted);
+  font-weight:500;
+  display:block;
+  line-height:1;
+  margin-bottom:.2rem;
+}
 
-        .mobile-menu.open { display: flex; }
+.sidebar-info-value{
+  font-size:.82rem;
+  color:var(--text);
+  font-weight:500;
+  line-height:1.3;
+}
 
-        .mobile-menu a {
-            text-decoration: none;
-            color: var(--text-dim);
-            font-size: 1.1rem;
-            font-weight: 500;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid var(--border);
-            transition: color 0.3s;
-        }
+.sidebar-badge{
+  display:inline-block;
+  font-size:.68rem;
+  font-weight:600;
+  background:var(--blue-light);
+  color:var(--blue);
+  padding:.2rem .6rem;
+  border-radius:4px;
+  margin:.2rem .15rem 0 0;
+}
 
-        .mobile-menu a:last-child { border-bottom: none; }
-        .mobile-menu a:hover { color: #fff; }
+.social-links{
+  display:flex;
+  gap:.6rem;
+  margin-top:.4rem;
+}
 
-        /* ── HERO ── */
-        header {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 100px 10% 60px;
-            background:
-                radial-gradient(ellipse 60% 50% at 50% 40%, rgba(124, 109, 240, 0.12) 0%, transparent 70%),
-                radial-gradient(ellipse 40% 30% at 80% 20%, rgba(180, 142, 240, 0.07) 0%, transparent 60%);
-            position: relative;
-        }
+.social-btn{
+  display:flex; align-items:center; justify-content:center;
+  width:36px; height:36px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  color:var(--text-dim);
+  text-decoration:none;
+  font-size:.85rem;
+  transition:all .25s;
+}
 
-        .hero-eyebrow {
-            font-size: 0.85rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-            font-weight: 500;
-        }
+.social-btn:hover{
+  background:var(--blue);
+  border-color:var(--blue);
+  color:#fff;
+}
 
-        header h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(3rem, 7vw, 5.5rem);
-            font-weight: 600;
-            line-height: 1.15;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.5px;
-        }
+/* NAV LINKS in sidebar */
+.sidebar-nav{
+  margin-top:auto;
+  padding-top:1.5rem;
+}
 
-        .highlight {
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+.sidebar-nav a{
+  display:flex;
+  align-items:center;
+  gap:.7rem;
+  padding:.65rem .9rem;
+  border-radius:10px;
+  text-decoration:none;
+  color:var(--text-dim);
+  font-size:.85rem;
+  font-weight:500;
+  transition:all .22s;
+  margin-bottom:.2rem;
+}
 
-        .hero-sub {
-            font-size: 1.1rem;
-            color: var(--text-dim);
-            margin-bottom: 2.5rem;
-            max-width: 480px;
-            line-height: 1.8;
-        }
+.sidebar-nav a:hover,
+.sidebar-nav a.active{
+  background:var(--blue-light);
+  color:var(--blue);
+}
 
-        .hero-badges {
-            display: flex;
-            gap: 0.8rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 2.8rem;
-        }
+.sidebar-nav a .nav-icon{font-size:1rem;}
 
-        .badge {
-            font-size: 0.78rem;
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            border: 1px solid var(--border);
-            color: var(--text-dim);
-            letter-spacing: 0.3px;
-        }
+/* ── MAIN CONTENT ── */
+.main{
+  margin-left:var(--sidebar-w);
+  flex:1;
+  min-height:100vh;
+}
 
-        /* ── SECTION BASE ── */
-        section {
-            padding: 110px 8%;
-            scroll-margin-top: 70px; /* fixed nav 보정 */
-        }
+/* ── HERO ── */
+.hero{
+  background:var(--white);
+  border-bottom:1px solid var(--border);
+  padding:5rem 5% 4.5rem;
+  position:relative;
+  overflow:hidden;
+}
 
-        /* about, projects, skills 앵커용 */
-        #about, #projects, #skills, #contact {
-            scroll-margin-top: 70px;
-        }
+.hero::before{
+  content:'';
+  position:absolute;
+  top:-80px; right:-80px;
+  width:400px; height:400px;
+  background:radial-gradient(circle,rgba(26,86,219,.07) 0%,transparent 70%);
+  pointer-events:none;
+}
 
-        h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            font-weight: 600;
-            margin-bottom: 3.5rem;
-            text-align: center;
-            position: relative;
-        }
+.hero::after{
+  content:'';
+  position:absolute;
+  bottom:-60px; left:10%;
+  width:280px; height:280px;
+  background:radial-gradient(circle,rgba(59,130,246,.05) 0%,transparent 70%);
+  pointer-events:none;
+}
 
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -14px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 3px;
-            background: var(--gradient);
-            border-radius: 2px;
-        }
+.topbar{
+  display:flex;
+  align-items:center;
+  gap:1.2rem;
+  padding:.9rem 5%;
+  background:var(--white);
+  border-bottom:1px solid var(--border);
+}
 
-        /* ── ABOUT ── */
-        .about-content {
-            max-width: 820px;
-            margin: 0 auto;
-            text-align: center;
-            background: var(--card-bg);
-            padding: 4rem 3rem;
-            border-radius: 24px;
-            border: 1px solid var(--border);
-            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
-        }
+.topbar-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.35rem;
+  font-weight:600;
+  color:var(--navy);
+  letter-spacing:.5px;
+}
 
-        .about-content p {
-            font-size: 1.08rem;
-            color: var(--text-dim);
-            margin-bottom: 1.4rem;
-        }
+.topbar-id{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.75rem;
+  font-weight:500;
+  color:var(--text-muted);
+  letter-spacing:1.5px;
+  padding:.25rem .7rem;
+  border:1px solid var(--border);
+  border-radius:4px;
+  background:var(--bg);
+}
 
-        .about-content strong { color: #fff; font-weight: 600; }
+.hero-tag{
+  align-items:center;
+  gap:.5rem;
+  font-size:.75rem;
+  font-weight:600;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+  color:var(--blue);
+  background:var(--blue-light);
+  padding:.35rem 1rem;
+  border-radius:50px;
+  margin-bottom:1.8rem;
+}
 
-        .quote {
-            margin-top: 2rem;
-            padding: 1.5rem 2rem;
-            border-left: 3px solid var(--accent2);
-            background: rgba(124, 109, 240, 0.07);
-            border-radius: 0 12px 12px 0;
-            text-align: left;
-            font-style: italic;
-            color: var(--text-main) !important;
-            font-size: 1.05rem !important;
-        }
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.4rem,4.5vw,3.8rem);
+  font-weight:700;
+  line-height:1.15;
+  color:var(--navy);
+  margin-bottom:1.2rem;
+  letter-spacing:-.5px;
+}
 
-        /* ── PROJECTS ── */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
+.hero h1 .accent{
+  color:var(--blue);
+}
 
-        .project-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 2.5rem;
-            border: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.35s, box-shadow 0.35s;
-            position: relative;
-            overflow: hidden;
-        }
+.hero-desc{
+  font-size:1.05rem;
+  color:var(--text-dim);
+  max-width:560px;
+  margin-bottom:2.2rem;
+  line-height:1.8;
+}
 
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 2px;
-            background: var(--gradient);
-            opacity: 0;
-            transition: opacity 0.35s;
-        }
+.hero-stats{
+  display:flex;
+  gap:2.5rem;
+  flex-wrap:wrap;
+}
 
-        .project-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(124, 109, 240, 0.4);
-            box-shadow: 0 20px 40px rgba(124, 109, 240, 0.15);
-        }
+.stat-item{}
 
-        .project-card:hover::before { opacity: 1; }
+.stat-num{
+  font-family:'Playfair Display',serif;
+  font-size:2rem;
+  font-weight:700;
+  color:var(--blue);
+  line-height:1;
+}
 
-        .project-card h3 {
-            margin-bottom: 1rem;
-            font-size: 1.25rem;
-            color: #fff;
-            font-weight: 600;
-        }
+.stat-label{
+  font-size:.75rem;
+  color:var(--text-muted);
+  font-weight:500;
+  letter-spacing:.3px;
+  margin-top:.2rem;
+}
 
-        .project-card p {
-            color: var(--text-dim);
-            font-size: 0.95rem;
-            margin-bottom: 1.8rem;
-            flex-grow: 1;
-        }
+/* ── SECTIONS ── */
+.content-section{
+  padding:4rem 5%;
+  border-bottom:1px solid var(--border);
+}
 
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.content-section:last-child{border-bottom:none;}
 
-        .tag-pill {
-            font-size: 0.78rem;
-            color: var(--accent);
-            font-weight: 600;
-            letter-spacing: 0.3px;
-        }
+.section-header{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  margin-bottom:2.5rem;
+}
 
-        .card-link {
-            font-size: 0.82rem;
-            color: var(--text-dim);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            border: 1px solid var(--border);
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            transition: all 0.3s;
-        }
+.section-label{
+  font-size:.7rem;
+  font-weight:600;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--blue);
+  margin-bottom:.5rem;
+}
 
-        .card-link:hover {
-            color: #fff;
-            border-color: var(--accent);
-            background: rgba(180, 142, 240, 0.08);
-        }
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.6rem,3vw,2.2rem);
+  font-weight:700;
+  color:var(--navy);
+  line-height:1.2;
+}
 
-        /* ── SKILLS ── */
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-            max-width: 900px;
-            margin: 0 auto;
-        }
+/* ── ABOUT ── */
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1.5rem;
+}
 
-        .skill-tag {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 0.8rem 1.6rem;
-            border-radius: 50px;
-            border: 1px solid var(--border);
-            font-size: 0.9rem;
-            transition: all 0.3s;
-            cursor: default;
-        }
+.about-card{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:2rem;
+  box-shadow:var(--card-shadow);
+}
 
-        .skill-tag:hover {
-            background: linear-gradient(135deg, rgba(124, 109, 240, 0.2), rgba(180, 142, 240, 0.2));
-            border-color: var(--accent2);
-            color: #fff;
-            transform: scale(1.05);
-        }
+.about-card.wide{grid-column:1/-1;}
 
-        /* ── CONTACT ── */
-        .contact-container {
-            text-align: center;
-            background: linear-gradient(135deg, rgba(124, 109, 240, 0.08), rgba(180, 142, 240, 0.05));
-            padding: 5rem 2rem;
-            border-radius: 30px;
-            border: 1px solid var(--border);
-        }
+.about-card p{
+  font-size:.95rem;
+  color:var(--text-dim);
+  line-height:1.9;
+}
 
-        .contact-container p {
-            color: var(--text-dim);
-            max-width: 560px;
-            margin: 1rem auto 0;
-            font-size: 1.05rem;
-        }
+.about-card strong{color:var(--text);font-weight:600;}
 
-        .btn {
-            display: inline-block;
-            padding: 1.1rem 2.8rem;
-            margin-top: 2.2rem;
-            background: var(--gradient);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-            transition: all 0.3s;
-            box-shadow: 0 8px 24px rgba(124, 109, 240, 0.35);
-        }
+.quote-card{
+  background:linear-gradient(135deg,var(--blue-deep),var(--blue));
+  color:#fff;
+  border:none;
+}
 
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 14px 32px rgba(124, 109, 240, 0.45);
-        }
+.quote-card p{
+  color:rgba(255,255,255,.9);
+  font-size:1.05rem;
+  font-style:italic;
+  line-height:1.8;
+}
 
-        /* ── FOOTER ── */
-        footer {
-            padding: 2.5rem;
-            text-align: center;
-            border-top: 1px solid var(--border);
-            color: var(--text-dim);
-            font-size: 0.85rem;
-        }
+.quote-card strong{color:#fff;}
 
-        /* ── MOBILE ── */
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hamburger { display: flex; }
+/* ── PROJECTS ── */
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:1.5rem;
+}
 
-            header h1 { font-size: 2.6rem; }
-            section { padding: 80px 6%; }
-            .about-content { padding: 2.5rem 1.5rem; }
-            .projects-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+.project-card{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:2rem;
+  box-shadow:var(--card-shadow);
+  transition:transform .3s,box-shadow .3s,border-color .3s;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+  overflow:hidden;
+}
+
+.project-card::before{
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0;
+  height:3px;
+  background:linear-gradient(90deg,var(--blue-deep),var(--blue-mid));
+  opacity:0;
+  transition:opacity .3s;
+}
+
+.project-card:hover{
+  transform:translateY(-5px);
+  box-shadow:var(--card-shadow-hover);
+  border-color:rgba(26,86,219,.25);
+}
+
+.project-card:hover::before{opacity:1;}
+
+.project-type-tag{
+  font-size:.68rem;
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:var(--blue);
+  background:var(--blue-light);
+  display:inline-block;
+  padding:.25rem .7rem;
+  border-radius:4px;
+  margin-bottom:1rem;
+}
+
+.project-card h3{
+  font-size:1.15rem;
+  font-weight:700;
+  color:var(--navy);
+  margin-bottom:.7rem;
+  line-height:1.35;
+}
+
+.project-card p{
+  font-size:.88rem;
+  color:var(--text-dim);
+  line-height:1.75;
+  flex:1;
+  margin-bottom:1.5rem;
+}
+
+.project-link{
+  font-size:.8rem;
+  font-weight:600;
+  color:var(--blue);
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:.3rem;
+  transition:gap .2s;
+}
+
+.project-link:hover{gap:.6rem;}
+
+/* ── FINAL PROJECT ── */
+.final-project-hero{
+  background:linear-gradient(135deg,var(--navy) 0%,var(--blue-deep) 100%);
+  border-radius:20px;
+  padding:3rem;
+  color:#fff;
+  margin-bottom:2rem;
+  position:relative;
+  overflow:hidden;
+}
+
+.final-project-hero::before{
+  content:'';
+  position:absolute;
+  top:-40px; right:-40px;
+  width:220px; height:220px;
+  background:rgba(255,255,255,.04);
+  border-radius:50%;
+}
+
+.final-project-hero::after{
+  content:'';
+  position:absolute;
+  bottom:-60px; right:80px;
+  width:150px; height:150px;
+  background:rgba(255,255,255,.03);
+  border-radius:50%;
+}
+
+.fp-tag{
+  font-size:.7rem;
+  font-weight:700;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:var(--blue-mid);
+  background:rgba(59,130,246,.2);
+  padding:.3rem .8rem;
+  border-radius:4px;
+  display:inline-block;
+  margin-bottom:1.2rem;
+}
+
+.final-project-hero h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.9rem;
+  font-weight:700;
+  line-height:1.25;
+  margin-bottom:.6rem;
+}
+
+.final-project-hero .fp-subtitle{
+  font-size:1rem;
+  color:rgba(255,255,255,.7);
+  font-style:italic;
+  margin-bottom:1.5rem;
+}
+
+.final-project-hero p{
+  font-size:.9rem;
+  color:rgba(255,255,255,.8);
+  line-height:1.8;
+  max-width:680px;
+}
+
+.fp-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1.2rem;
+  margin-bottom:1.2rem;
+}
+
+.fp-card{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:1.6rem;
+  box-shadow:var(--card-shadow);
+}
+
+.fp-card h4{
+  font-size:.8rem;
+  font-weight:700;
+  letter-spacing:.8px;
+  text-transform:uppercase;
+  color:var(--blue);
+  margin-bottom:1rem;
+  display:flex;
+  align-items:center;
+  gap:.5rem;
+}
+
+.fp-flow{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+}
+
+.flow-step{
+  font-size:.78rem;
+  font-weight:600;
+  padding:.3rem .8rem;
+  border-radius:6px;
+  background:var(--blue-light);
+  color:var(--blue-deep);
+  display:flex;
+  align-items:center;
+  gap:.3rem;
+}
+
+.flow-arrow{color:var(--text-muted);font-size:.75rem;align-self:center;}
+
+.member-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:.85rem;
+}
+
+.member-table th{
+  font-size:.68rem;
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:var(--text-muted);
+  padding:.5rem .8rem;
+  text-align:left;
+  border-bottom:1px solid var(--border);
+}
+
+.member-table td{
+  padding:.55rem .8rem;
+  border-bottom:1px solid var(--border);
+  color:var(--text);
+  font-weight:500;
+}
+
+.member-table tr:last-child td{border-bottom:none;}
+
+.member-dot{
+  display:inline-block;
+  width:8px; height:8px;
+  border-radius:50%;
+  margin-right:.5rem;
+}
+
+.dot-jennie{background:#e91e8c;}
+.dot-jisoo{background:#9333ea;}
+.dot-rose{background:#f59e0b;}
+.dot-lisa{background:#10b981;}
+
+.brand-chip{
+  display:inline-block;
+  font-size:.72rem;
+  font-weight:600;
+  padding:.2rem .6rem;
+  border-radius:4px;
+  background:var(--blue-light);
+  color:var(--blue-deep);
+}
+
+.fp-kpi-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1rem;
+  margin-bottom:1.2rem;
+}
+
+.kpi-box{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:1.3rem 1.2rem;
+  box-shadow:var(--card-shadow);
+  text-align:center;
+}
+
+.kpi-label{
+  font-size:.7rem;
+  font-weight:600;
+  letter-spacing:.8px;
+  text-transform:uppercase;
+  color:var(--text-muted);
+  margin-bottom:.5rem;
+}
+
+.kpi-value{
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;
+  font-weight:700;
+  color:var(--blue);
+}
+
+.kpi-sub{font-size:.72rem;color:var(--text-muted);margin-top:.2rem;}
+
+.fp-conclusion-card{
+  background:linear-gradient(135deg,#eff6ff,#dbeafe);
+  border:1px solid rgba(26,86,219,.2);
+  border-radius:14px;
+  padding:1.8rem;
+}
+
+.fp-conclusion-card h4{
+  font-size:.8rem;
+  font-weight:700;
+  letter-spacing:.8px;
+  text-transform:uppercase;
+  color:var(--blue-deep);
+  margin-bottom:1rem;
+}
+
+.conclusion-points{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:.6rem;
+}
+
+.conclusion-point{
+  display:flex;
+  align-items:center;
+  gap:.6rem;
+  font-size:.85rem;
+  color:var(--text);
+  font-weight:500;
+}
+
+.point-dot{
+  width:6px; height:6px;
+  border-radius:50%;
+  background:var(--blue);
+  flex-shrink:0;
+}
+
+.tools-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+  margin-top:.8rem;
+}
+
+.tool-tag{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.75rem;
+  font-weight:500;
+  padding:.3rem .8rem;
+  border-radius:6px;
+  background:var(--navy);
+  color:#7dd3fc;
+}
+
+/* ── SKILLS ── */
+.skills-categories{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:1.2rem;
+}
+
+.skill-cat{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:1.6rem;
+  box-shadow:var(--card-shadow);
+}
+
+.skill-cat-title{
+  font-size:.75rem;
+  font-weight:700;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+  color:var(--blue);
+  margin-bottom:1.1rem;
+  padding-bottom:.7rem;
+  border-bottom:1px solid var(--border);
+}
+
+.skill-item{
+  display:flex;
+  align-items:center;
+  gap:.6rem;
+  padding:.45rem 0;
+  border-bottom:1px solid var(--border);
+  font-size:.85rem;
+  color:var(--text);
+  font-weight:500;
+}
+
+.skill-item:last-child{border-bottom:none;}
+
+.skill-item::before{
+  content:'';
+  width:6px; height:6px;
+  border-radius:50%;
+  background:var(--blue-mid);
+  flex-shrink:0;
+}
+
+/* ── CONTACT ── */
+.contact-card{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:3.5rem;
+  box-shadow:var(--card-shadow);
+  text-align:center;
+  max-width:600px;
+  margin:0 auto;
+}
+
+.contact-card h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.8rem;
+  color:var(--navy);
+  margin-bottom:.8rem;
+}
+
+.contact-card p{
+  color:var(--text-dim);
+  margin-bottom:2rem;
+  line-height:1.8;
+}
+
+.btn-primary{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  padding:1rem 2.5rem;
+  background:var(--blue);
+  color:#fff;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+  font-size:.9rem;
+  letter-spacing:.3px;
+  transition:all .25s;
+  box-shadow:0 4px 14px rgba(26,86,219,.35);
+}
+
+.btn-primary:hover{
+  background:var(--blue-deep);
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(26,86,219,.4);
+}
+
+/* ── FOOTER ── */
+footer{
+  padding:2rem 5%;
+  text-align:center;
+  font-size:.8rem;
+  color:var(--text-muted);
+  background:var(--white);
+  border-top:1px solid var(--border);
+}
+
+/* ── MOBILE TOGGLE ── */
+.sidebar-toggle{
+  display:none;
+  position:fixed;
+  bottom:1.5rem; right:1.5rem;
+  width:52px; height:52px;
+  background:var(--blue);
+  border:none;
+  border-radius:50%;
+  cursor:pointer;
+  z-index:200;
+  color:#fff;
+  font-size:1.4rem;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 4px 16px rgba(26,86,219,.4);
+}
+
+@media(max-width:900px){
+  .sidebar{
+    transform:translateX(-100%);
+    transition:transform .3s;
+    box-shadow:4px 0 24px rgba(0,0,0,.12);
+  }
+  .sidebar.open{transform:translateX(0);}
+  .main{margin-left:0;}
+  .sidebar-toggle{display:flex;}
+  .hero{padding:4rem 6% 3.5rem;}
+  .content-section{padding:3rem 6%;}
+  .about-grid{grid-template-columns:1fr;}
+  .about-card.wide{grid-column:auto;}
+  .fp-grid{grid-template-columns:1fr;}
+  .fp-kpi-row{grid-template-columns:1fr 1fr;}
+  .conclusion-points{grid-template-columns:1fr;}
+}
+
+@media(max-width:480px){
+  .hero h1{font-size:2rem;}
+  .hero-stats{gap:1.5rem;}
+  .fp-kpi-row{grid-template-columns:1fr;}
+  .projects-grid{grid-template-columns:1fr;}
+}
+
+/* scroll animation */
+.fade-in{
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .6s,transform .6s;
+}
+.fade-in.visible{opacity:1;transform:none;}
+</style>
 </head>
 <body>
 
-    <!-- NAV -->
-    <nav>
-        <div class="logo">YOUNSEO.L</div>
-        <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#skills">Skills</a>
-            <a href="#contact">Contact</a>
-        </div>
-        <button class="hamburger" id="hamburger" aria-label="메뉴 열기">
-            <span></span><span></span><span></span>
-        </button>
-    </nav>
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-avatar">YL</div>
+  <div class="sidebar-name">Younseo Lee<br>이연서</div>
+  <div class="sidebar-title">Fashion Business · SKKU '24</div>
 
-    <!-- 모바일 드롭다운 메뉴 -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="#about"    onclick="closeMenu()">About</a>
-        <a href="#projects" onclick="closeMenu()">Projects</a>
-        <a href="#skills"   onclick="closeMenu()">Skills</a>
-        <a href="#contact"  onclick="closeMenu()">Contact</a>
+  <div class="sidebar-divider"></div>
+
+  <div class="sidebar-section-label">Profile</div>
+
+  <div class="sidebar-info-row">
+    <div class="sidebar-info-icon">🎓</div>
+    <div class="sidebar-info-content">
+      <span class="sidebar-info-label">Education</span>
+      <span class="sidebar-info-value">Sungkyunkwan University<br>Fashion × Business Admin</span>
+    </div>
+  </div>
+
+  <div class="sidebar-info-row">
+    <div class="sidebar-info-icon">📍</div>
+    <div class="sidebar-info-content">
+      <span class="sidebar-info-label">Location</span>
+      <span class="sidebar-info-value">Seoul, South Korea</span>
+    </div>
+  </div>
+
+  <div class="sidebar-info-row">
+    <div class="sidebar-info-icon">🎯</div>
+    <div class="sidebar-info-content">
+      <span class="sidebar-info-label">Career Goal</span>
+      <span class="sidebar-info-value">Global Fashion MD &amp; Marketing Expert</span>
+    </div>
+  </div>
+
+  <div class="sidebar-divider"></div>
+
+  <div class="sidebar-section-label">Language</div>
+  <div class="sidebar-info-row" style="flex-wrap:wrap;gap:.3rem;">
+    <span class="sidebar-badge">🇰🇷 Korean (Native)</span>
+    <span class="sidebar-badge">🇺🇸 English (Fluent)</span>
+  </div>
+
+  <div class="sidebar-divider"></div>
+
+  <div class="sidebar-section-label">Academic</div>
+  <div class="sidebar-info-row">
+    <div class="sidebar-info-icon">📚</div>
+    <div class="sidebar-info-content">
+      <span class="sidebar-info-label">Double Major</span>
+      <span class="sidebar-info-value">Fashion Design &amp; Business Administration</span>
+    </div>
+  </div>
+  <div class="sidebar-info-row">
+    <div class="sidebar-info-icon">🏆</div>
+    <div class="sidebar-info-content">
+      <span class="sidebar-info-label">Final Project</span>
+      <span class="sidebar-info-value">BLACKPINK × Luxury Branding Dashboard</span>
+    </div>
+  </div>
+
+  <div class="sidebar-divider"></div>
+
+  <div class="sidebar-section-label">Contact</div>
+  <div class="sidebar-info-row">
+    <div class="sidebar-info-icon">✉️</div>
+    <div class="sidebar-info-content">
+      <span class="sidebar-info-label">Email</span>
+      <a href="mailto:younseo6376@g.skku.edu" class="sidebar-info-value" style="color:var(--blue);text-decoration:none;font-size:.82rem;">younseo6376@g.skku.edu</a>
+    </div>
+  </div>
+  <div class="social-links">
+    <a href="#" class="social-btn" title="LinkedIn">in</a>
+    <a href="#" class="social-btn" title="Instagram">ig</a>
+    <a href="#" class="social-btn" title="GitHub">gh</a>
+  </div>
+
+  <nav class="sidebar-nav">
+    <div class="sidebar-section-label" style="margin-bottom:.6rem;">Navigation</div>
+    <a href="#about"><span class="nav-icon">👤</span>About</a>
+    <a href="#projects"><span class="nav-icon">📁</span>Projects</a>
+    <a href="#final-project"><span class="nav-icon">⭐</span>Final Project</a>
+    <a href="#skills"><span class="nav-icon">🛠</span>Skills</a>
+    <a href="#contact"><span class="nav-icon">📬</span>Contact</a>
+  </nav>
+</aside>
+
+<!-- MOBILE TOGGLE -->
+<button class="sidebar-toggle" id="sidebarToggle" aria-label="사이드바 열기">☰</button>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <span class="topbar-name">Younseo Lee</span>
+    <span class="topbar-id">2024312091</span>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero fade-in">
+    <div class="hero-tag">✦ Portfolio · 2026</div>
+    <h1>Aspiring <span class="accent">Global Leader</span><br>in Fashion Business</h1>
+    <p class="hero-desc">
+      SKKU Class of '24 · Double Major in Fashion &amp; Business Administration<br>
+      Passionate about connecting creative fashion narratives with strategic market insight.
+    </p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Double Major</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Featured Projects</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Global Luxury Brands Analyzed</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="content-section fade-in" id="about">
+    <div class="section-header">
+      <div>
+        <div class="section-label">About Me</div>
+        <h2 class="section-title">Who I Am</h2>
+      </div>
+    </div>
+    <div class="about-grid">
+      <div class="about-card">
+        <p>I am a member of the <strong>Class of '24 at Sungkyunkwan University</strong>, pursuing a double major in <strong>Fashion and Business Administration</strong>. My passion lies at the intersection of creative fashion narratives and strategic business logic.</p>
+      </div>
+      <div class="about-card">
+        <p>I am dedicated to becoming a <strong>Marketing and Merchandising (MD) expert</strong> who bridges the gap between aesthetic trends and analytical market performance — combining data insight with cultural intuition.</p>
+      </div>
+      <div class="about-card wide quote-card">
+        <p>"Driven by a global mindset, my ultimate career goal is to excel in the <strong>international fashion market</strong> — bringing innovative Korean perspectives to global retail, brand management, and luxury strategy."</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="content-section fade-in" id="projects">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Work</div>
+        <h2 class="section-title">Featured Projects</h2>
+      </div>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-type-tag">UI/UX Design</div>
+        <h3>Art Gallery Dashboard</h3>
+        <p>A comprehensive visual interface for art collection management, emphasizing clean aesthetics and intuitive user navigation for curators and gallery visitors.</p>
+        <a href="https://my-first-databub-jhetycjfqm6hmavoks4wh5.streamlit.app/" target="_blank" rel="noopener" class="project-link">View Project →</a>
+      </div>
+      <div class="project-card">
+        <div class="project-type-tag">Marketing Strategy</div>
+        <h3>SNS Marketing App</h3>
+        <p>A strategic application concept focused on amplifying brand engagement and scaling social media presence through data-driven insights and trend analysis.</p>
+        <a href="https://my-first-databub-39aurp3gdkwam3apr2zlbc.streamlit.app/" target="_blank" rel="noopener" class="project-link">View Project →</a>
+      </div>
+      <div class="project-card">
+        <div class="project-type-tag">Web Design</div>
+        <h3>Hello, SKKU!</h3>
+        <p>An early-stage web page built as an initial experiment in web design. This is a very simple layout reflecting the beginning of my journey in front-end development — intentionally minimal in structure and style.</p>
+        <a href="https://my-first-databub-6vz9wpbqyb9ejasi7a8lbt.streamlit.app/" target="_blank" rel="noopener" class="project-link">View Project →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL PROJECT -->
+  <section class="content-section fade-in" id="final-project">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Capstone · 2026</div>
+        <h2 class="section-title">Final Project <span style="font-family:'IBM Plex Sans',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;background:#fef9c3;color:#a16207;border:1px solid #fde68a;padding:.2rem .65rem;border-radius:50px;vertical-align:middle;margin-left:.6rem;">⏳ In Progress</span></h2>
+      </div>
     </div>
 
-    <!-- HERO -->
-    <header>
-        <p class="hero-eyebrow">Portfolio · 2026</p>
-        <h1>Aspiring <span class="highlight">Global Leader</span><br>in Fashion Business</h1>
-        <p class="hero-sub">SKKU '24 · Fashion & Business Administration<br>Future Marketing & Merchandising Expert</p>
-        <div class="hero-badges">
-            <span class="badge">🎓 Sungkyunkwan University</span>
-            <span class="badge">👗 Fashion × Business</span>
-            <span class="badge">🌏 Global Mindset</span>
+    <!-- Hero Block -->
+    <div class="final-project-hero">
+      <div class="fp-tag">⭐ Featured Capstone Project</div>
+      <h3>Why Luxury Brands Invest in BLACKPINK</h3>
+      <p class="fp-subtitle">BLACKPINK &amp; Luxury Branding Dashboard</p>
+      <p>An interactive <strong style="color:#fff;">Streamlit Dashboard</strong> that analyzes the relationship between K-pop idols and global luxury brands through data. Centered on BLACKPINK's global ambassador activities and Met Gala appearances, this project visualizes why luxury brands strategically invest in K-pop idols.</p>
+    </div>
+
+    <!-- KPI Row -->
+    <div class="fp-kpi-row">
+      <div class="kpi-box">
+        <div class="kpi-label">Media Impact Value</div>
+        <div class="kpi-value">+400%</div>
+        <div class="kpi-sub">Chanel website traffic increase</div>
+      </div>
+      <div class="kpi-box">
+        <div class="kpi-label">Gen-Z Acquisition</div>
+        <div class="kpi-value">↑ High</div>
+        <div class="kpi-sub">Share of new Gen-Z visitors to brand accounts</div>
+      </div>
+      <div class="kpi-box">
+        <div class="kpi-label">Global Buzz Index</div>
+        <div class="kpi-value">🌏 3</div>
+        <div class="kpi-sub">Asia · N.America · Europe</div>
+      </div>
+    </div>
+
+    <!-- Detail Grid -->
+    <div class="fp-grid">
+      <!-- Dashboard Flow -->
+      <div class="fp-card">
+        <h4>📊 Dashboard Flow</h4>
+        <div class="fp-flow">
+          <div class="flow-step">Intro</div>
+          <div class="flow-arrow">›</div>
+          <div class="flow-step">Brand Overview</div>
+          <div class="flow-arrow">›</div>
+          <div class="flow-step">Data Collection</div>
+          <div class="flow-arrow">›</div>
+          <div class="flow-step">Met Gala Analysis</div>
+          <div class="flow-arrow">›</div>
+          <div class="flow-step">Conclusion (Why Invest?)</div>
         </div>
-        <a href="#contact" class="btn">Let's Connect</a>
-    </header>
+      </div>
 
-    <!-- ABOUT -->
-    <section id="about">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <p>
-                I am a member of the <strong>Class of '24 at Sungkyunkwan University</strong>, currently pursuing a double major in <strong>Fashion and Business Administration</strong>.
-            </p>
-            <p>
-                My passion lies at the intersection of creative fashion narratives and strategic business logic. I am dedicated to becoming a <strong>Marketing and Merchandising (MD) expert</strong> who can bridge the gap between aesthetic trends and analytical market performance.
-            </p>
-            <p class="quote">
-                "Driven by a global mindset, my ultimate career goal is to excel in the <strong>international fashion market</strong>, bringing innovative Korean perspectives to global retail and brand management."
-            </p>
+      <!-- Member–Brand Table -->
+      <div class="fp-card">
+        <h4>👗 Member × Brand Mapping</h4>
+        <table class="member-table">
+          <thead>
+            <tr><th>Member</th><th>Luxury Brand</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="member-dot dot-jennie"></span>Jennie</td><td><span class="brand-chip">Chanel</span></td></tr>
+            <tr><td><span class="member-dot dot-rose"></span>Rosé</td><td><span class="brand-chip">Saint Laurent</span></td></tr>
+            <tr><td><span class="member-dot dot-jisoo"></span>Jisoo</td><td><span class="brand-chip">Dior</span></td></tr>
+            <tr><td><span class="member-dot dot-lisa"></span>Lisa</td><td><span class="brand-chip">Celine</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Sidebar Features -->
+      <div class="fp-card">
+        <h4>🎛 Sidebar Filters</h4>
+        <div style="display:flex;flex-wrap:wrap;gap:.5rem;">
+          <span class="sidebar-badge" style="background:#fce7f3;color:#9d174d;">Jennie</span>
+          <span class="sidebar-badge" style="background:#ede9fe;color:#5b21b6;">Jisoo</span>
+          <span class="sidebar-badge" style="background:#fef3c7;color:#92400e;">Rosé</span>
+          <span class="sidebar-badge" style="background:#d1fae5;color:#065f46;">Lisa</span>
         </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects">
-        <h2>Featured Projects</h2>
-        <div class="projects-grid">
-
-            <div class="project-card">
-                <div>
-                    <h3>Art Gallery Dashboard</h3>
-                    <p>A comprehensive visual interface designed for art collection management, emphasizing clean aesthetics and intuitive user navigation.</p>
-                </div>
-                <div class="card-footer">
-                    <span class="tag-pill">UI/UX Design</span>
-                    <a href="#" class="card-link">View Project →</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div>
-                    <h3>SNS Marketing App</h3>
-                    <p>A strategic application concept focused on amplifying brand engagement and scaling social media presence through data-driven insights.</p>
-                </div>
-                <div class="card-footer">
-                    <span class="tag-pill">Marketing Strategy</span>
-                    <a href="#" class="card-link">View Project →</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div>
-                    <h3>Global Trend Report</h3>
-                    <p>Seasonal fashion trend analysis covering key markets in Europe and Asia, with actionable MD recommendations for local buyers.</p>
-                </div>
-                <div class="card-footer">
-                    <span class="tag-pill">Trend Forecasting</span>
-                    <a href="#" class="card-link">View Project →</a>
-                </div>
-            </div>
-
+        <div style="margin-top:.8rem;font-size:.82rem;color:var(--text-dim);line-height:1.7;">
+          When a member is selected in the sidebar → event images, worn brands, year, and SNS engagement figures update in real time alongside the main charts.
         </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills">
-        <h2>Expertise & Interests</h2>
-        <div class="skills-container">
-            <div class="skill-tag">Global Fashion MD</div>
-            <div class="skill-tag">Market Analysis</div>
-            <div class="skill-tag">Brand Strategy</div>
-            <div class="skill-tag">Digital Marketing</div>
-            <div class="skill-tag">Consumer Psychology</div>
-            <div class="skill-tag">International Business</div>
-            <div class="skill-tag">Creative Direction</div>
-            <div class="skill-tag">Trend Forecasting</div>
+        <div style="margin-top:.8rem;">
+          <span class="sidebar-badge">Met Gala Filter</span>
+          <span class="sidebar-badge">Year Filter</span>
+          <span class="sidebar-badge">Event Type</span>
         </div>
-    </section>
+      </div>
 
-    <!-- CONTACT -->
-    <section id="contact">
-        <div class="contact-container">
-            <h2>Ready for the Next Step</h2>
-            <p>I am actively seeking opportunities to contribute to global fashion brands and marketing agencies.</p>
-            <!-- ✅ 실제 이메일로 교체 필요 -->
-            <a href="mailto:your-real-email@example.com" class="btn">Email Me Today</a>
+      <!-- Visualizations -->
+      <div class="fp-card">
+        <h4>📈 Visualizations</h4>
+        <div style="font-size:.82rem;color:var(--text-dim);line-height:2;">
+          <div>📊 <strong style="color:var(--text);">Bar Chart</strong> — SNS engagement comparison by event</div>
+          <div>🔵 <strong style="color:var(--text);">Scatter Plot</strong> — Followers vs. Engagement</div>
+          <div>📰 <strong style="color:var(--text);">Media Mentions</strong> — Article volume comparison by brand</div>
+          <div>🗂 <strong style="color:var(--text);">Data Table</strong> — member / brand / event / year</div>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <footer>
-        <p>&copy; 2026 Younseo Lee. Designed for Global Excellence.</p>
-    </footer>
+    <!-- Tools -->
+    <div class="fp-card" style="margin-bottom:1.2rem;">
+      <h4>🛠 Tech Stack</h4>
+      <div class="tools-row">
+        <span class="tool-tag">Python</span>
+        <span class="tool-tag">Streamlit</span>
+        <span class="tool-tag">Pandas</span>
+        <span class="tool-tag">Plotly</span>
+        <span class="tool-tag">CSV Dataset</span>
+        <span class="tool-tag">Instagram API</span>
+        <span class="tool-tag">Vogue Archive</span>
+      </div>
+    </div>
 
-    <script>
-        const hamburger = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
+    <!-- Conclusion -->
+    <div class="fp-conclusion-card">
+      <h4>💡 Core Insight — MD's Conclusion</h4>
+      <div class="conclusion-points">
+        <div class="conclusion-point"><span class="point-dot"></span>Global Reach — Instant brand exposure through a worldwide fanbase</div>
+        <div class="conclusion-point"><span class="point-dot"></span>Gen Z Influence — Direct impact on the digital-native generation's customer journey</div>
+        <div class="conclusion-point"><span class="point-dot"></span>Social Media Power — Maximizing viral marketing effect via SNS</div>
+        <div class="conclusion-point"><span class="point-dot"></span>Asian Luxury Market Impact — Targeting the Asian luxury market through K-pop</div>
+      </div>
+      <p style="font-size:.85rem;color:var(--blue-deep);margin-top:1.2rem;font-weight:500;line-height:1.7;">
+        "Luxury brands are leveraging BLACKPINK not merely as models, but as a <strong>global digital branding platform</strong>."
+      </p>
+    </div>
+  </section>
 
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('open');
-            mobileMenu.classList.toggle('open');
-        });
+  <!-- SKILLS -->
+  <section class="content-section fade-in" id="skills">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Expertise</div>
+        <h2 class="section-title">Skills &amp; Interests</h2>
+      </div>
+    </div>
+    <div class="skills-categories">
+      <div class="skill-cat">
+        <div class="skill-cat-title">Fashion Business</div>
+        <div class="skill-item">Global Fashion MD</div>
+        <div class="skill-item">Trend Forecasting</div>
+        <div class="skill-item">Merchandising Strategy</div>
+        <div class="skill-item">Creative Direction</div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-title">Marketing</div>
+        <div class="skill-item">Brand Strategy</div>
+        <div class="skill-item">Digital Marketing</div>
+        <div class="skill-item">SNS Campaign Planning</div>
+        <div class="skill-item">Consumer Psychology</div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-title">Analytics & Data</div>
+        <div class="skill-item">Market Analysis</div>
+        <div class="skill-item">Data Visualization</div>
+        <div class="skill-item">Python / Streamlit</div>
+        <div class="skill-item">Plotly / Pandas</div>
+      </div>
+      <div class="skill-cat">
+        <div class="skill-cat-title">Global Business</div>
+        <div class="skill-item">International Business</div>
+        <div class="skill-item">Luxury Brand Management</div>
+        <div class="skill-item">K-pop Industry Insight</div>
+        <div class="skill-item">Cross-cultural Communication</div>
+      </div>
+    </div>
+  </section>
 
-        function closeMenu() {
-            hamburger.classList.remove('open');
-            mobileMenu.classList.remove('open');
-        }
-    </script>
+  <!-- CONTACT -->
+  <section class="content-section fade-in" id="contact">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Get In Touch</div>
+        <h2 class="section-title">Let's Connect</h2>
+      </div>
+    </div>
+    <div class="contact-card">
+      <h3>Ready for the Next Step</h3>
+      <p>I am actively seeking opportunities to contribute to global fashion brands, marketing agencies, and luxury retail. Let's build something impactful together.</p>
+      <a href="mailto:younseo6376@g.skku.edu" class="btn-primary">✉️ Email Me</a>
+    </div>
+  </section>
 
+  <footer>
+    <p>&copy; 2026 Younseo Lee · Sungkyunkwan University · Fashion &amp; Business Administration</p>
+  </footer>
+
+</main>
+
+<script>
+// Sidebar toggle (mobile)
+const sidebar=document.getElementById('sidebar');
+const toggle=document.getElementById('sidebarToggle');
+toggle.addEventListener('click',()=>{
+  sidebar.classList.toggle('open');
+  toggle.textContent=sidebar.classList.contains('open')?'✕':'☰';
+});
+
+// Close sidebar on nav link click (mobile)
+document.querySelectorAll('.sidebar-nav a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    if(window.innerWidth<=900){
+      sidebar.classList.remove('open');
+      toggle.textContent='☰';
+    }
+  });
+});
+
+// Active nav highlight on scroll
+const sections=document.querySelectorAll('[id]');
+const navLinks=document.querySelectorAll('.sidebar-nav a');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      navLinks.forEach(l=>{
+        l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id);
+      });
+    }
+  });
+},{threshold:.35});
+sections.forEach(s=>observer.observe(s));
+
+// Fade-in on scroll
+const fadeEls=document.querySelectorAll('.fade-in');
+const fadeObserver=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:.1});
+fadeEls.forEach(el=>fadeObserver.observe(el));
+</script>
 </body>
 </html>
